@@ -27,6 +27,8 @@ export default class Content {
 
         res.write("Hello Jedlik, hello 9a");
         res.write("<h2 style='color:red;'>TypeScript</h2>");
+        res.write("próba\n");
+        res.write("alma\n");
 
         // <---- Fejezd be a kódolást
 
