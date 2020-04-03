@@ -56,6 +56,7 @@ export default class Content {
         res.write(`Terület = ${terület}\n`);
         res.write(`Kerület = ${kerület}\n`);
         res.write(`${kerület}`);
+        res.write("\n\n");
 
         // <---- Fejezd be a kódolást
 
