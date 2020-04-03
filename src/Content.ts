@@ -51,10 +51,11 @@ export default class Content {
         }
         res.write(`<input type='text' name='inputb' value=${oldalB} style='width:5em;' onChange='this.form.submit();'>\n`);
 
-        const terület = oldalA * oldalB;
-        const kerület = 2 * (oldalA + oldalB);
+        const terület: number = oldalA * oldalB;
+        const kerület: number = 2 * (oldalA + oldalB);
         res.write(`Terület = ${terület}\n`);
         res.write(`Kerület = ${kerület}\n`);
+        res.write(`${kerület}`);
 
         // <---- Fejezd be a kódolást
 
