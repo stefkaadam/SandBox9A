@@ -55,8 +55,49 @@ export default class Content {
         const kerület: number = 2 * (oldalA + oldalB);
         res.write(`Terület = ${terület}\n`);
         res.write(`Kerület = ${kerület}\n`);
-        res.write(`${kerület}`);
+        //console.log(terület);
         res.write("\n\n");
+
+        res.write("Páros-páratlan meghatározó\n");
+        res.write("x = ");
+        let x: number = parseInt(params.inputx as string);
+        if (isNaN(x)) {
+            x = 0;
+        }
+        res.write(`<input type='number' name='inputx' value=${x} style='width:5em;' onChange='this.form.submit();'>\n`);
+        if (x % 2 === 0) {
+            res.write("A szám páros!\n");
+        } else {
+            res.write("A szám páratlan!\n\n");
+        }
+
+        res.write("KRÉTA\n");
+        res.write("Kérem az osztályzatot: ");
+        let jegy: number = parseInt(params.jegy as string);
+        if (isNaN(jegy)) {
+            jegy = 5;
+        }
+        res.write(`<input type='text' name='jegy' value=${jegy} style='width:5em;' onChange='this.form.submit();'>\n`);
+        switch (jegy) {
+            case 1:
+                res.write("Elégtelen\n");
+                break;
+            case 2:
+                res.write("Elégséges\n");
+                break;
+            case 3:
+                res.write("Közepes\n");
+                break;
+            case 4:
+                res.write("Jó\n");
+                break;
+            case 5:
+                res.write("Jeles\n");
+                break;
+            default:
+                res.write("Ez nem osztályzat\n");
+                break;
+        }
 
         // <---- Fejezd be a kódolást
 
