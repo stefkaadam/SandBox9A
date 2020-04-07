@@ -95,8 +95,56 @@ export default class Content {
                 res.write("Jeles\n");
                 break;
             default:
-                res.write("Ez nem osztályzat\n");
+                res.write("Ez nem osztályzat\n\n\n\n\n");
                 break;
+        }
+        res.write("Másodfokú egyenlet gyökei\n");
+        res.write("Kérem az együtthatókat !\n");
+
+        res.write("a = ");
+        let a: number = parseInt(params.a as string);
+        if (isNaN(a)) {
+            a = 1;
+        }
+        res.write(`<input type='text' name='a' value=${a} style='width:5em;' onChange='this.form.submit();'>\n`);
+
+        res.write("b = ");
+        let b: number = parseInt(params.b as string);
+        if (isNaN(b)) {
+            b = 2;
+        }
+        res.write(`<input type='text' name='b' value=${b} style='width:5em;' onChange='this.form.submit();'>\n`);
+
+        res.write("c = ");
+        let c: number = parseInt(params.c as string);
+        if (isNaN(c)) {
+            c = 1;
+        }
+        res.write(`<input type='text' name='c' value=${c} style='width:5em;' onChange='this.form.submit();'>\n`);
+
+        if (a != 0) {
+            if (Math.pow(b, 2) >= 4 * a * c) {
+                if (Math.pow(b, 2) > 4 * a * c) {
+                    res.write("Két gyök!\n");
+                    const x1: number = -b + Math.sqrt(Math.pow(b, 2) - 4 * a * c) / (2 * a);
+                    const x2: number = -b - Math.sqrt(Math.pow(b, 2) - 4 * a * c) / (2 * a);
+                    res.write(`x1 = ${x1}\n`);
+                    res.write(`x2 = ${x2}\n`);
+                } else {
+                    res.write("Egy gyök!\n");
+                    const x: number = -b / (2 * a);
+                    res.write(`x = ${x}\n`);
+                }
+            } else res.write("Nincs valós gyök!\n");
+        } else {
+            res.write("Nem másodfokú!\n");
+            if (b != 0) {
+                const x: number = -c / b;
+                res.write(`x = ${x}`);
+            } else {
+                if (c != 0) res.write("Ellentmondás !\n");
+                else res.write("Azonosság !\n");
+            }
         }
 
         // <---- Fejezd be a kódolást
