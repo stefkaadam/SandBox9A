@@ -2,9 +2,9 @@
 import http from "http";
 import url from "url";
 
-function osszead(a: number, b: number): number {
-    return a + b;
-}
+// function osszead(a: number, b: number): number {
+//     return a + b;
+// }
 
 function faktorialis(n: number): number {
     let fakt: number = 1;
@@ -76,9 +76,9 @@ export default class Content {
         if (isNaN(x)) {
             x = 0;
         }
-        res.write(`<input type='number' name='inputx' value=${x} style='width:5em;' onChange='this.form.submit();'>\n`);
+        res.write(`<input type='number' name='inputx' value=${x} style='width:8em;' onChange='this.form.submit();'>\n`);
         if (x % 2 === 0) {
-            res.write("A szám páros!\n");
+            res.write("A szám páros!\n\n");
         } else {
             res.write("A szám páratlan!\n\n");
         }
@@ -92,22 +92,22 @@ export default class Content {
         res.write(`<input type='text' name='jegy' value=${jegy} style='width:5em;' onChange='this.form.submit();'>\n`);
         switch (jegy) {
             case 1:
-                res.write("Elégtelen\n");
+                res.write("Elégtelen\n\n\n\n");
                 break;
             case 2:
-                res.write("Elégséges\n");
+                res.write("Elégséges\n\n\n\n");
                 break;
             case 3:
-                res.write("Közepes\n");
+                res.write("Közepes\n\n\n\n");
                 break;
             case 4:
-                res.write("Jó\n");
+                res.write("Jó\n\n\n\n");
                 break;
             case 5:
-                res.write("Jeles\n");
+                res.write("Jeles\n\n\n\n");
                 break;
             default:
-                res.write("Ez nem osztályzat\n\n\n\n\n");
+                res.write("Ez nem osztályzat\n\n\n\n");
                 break;
         }
         res.write("Másodfokú egyenlet gyökei\n");
@@ -159,17 +159,17 @@ export default class Content {
             }
         }
 
-        res.write("Függvény hívása\n");
-        let x1: number;
-        x1 = 4;
-        x1++; // vagy x1 = x1 + 1;
-        let x2: number;
-        x2 = 4;
-        x2--; // vagy x2 = x2 - 1;
-        const osszeg: number = osszead(x1, x2);
-        res.write(`${x1}+${x2}=${osszeg}`);
+        // res.write("\n\n\n\n\nFüggvény hívása\n");
+        // let x1: number;
+        // x1 = 4;
+        // x1++; // vagy x1 = x1 + 1;
+        // let x2: number;
+        // x2 = 4;
+        // x2--; // vagy x2 = x2 - 1;
+        // const osszeg: number = osszead(x1, x2);
+        // res.write(`${x1}+${x2}=${osszeg}`);
 
-        res.write("\nSzám faktoriálisa\n");
+        res.write("\n\n\n\nSzám faktoriálisa\n");
         res.write("Kérem a számot: ");
         let n: number = parseInt(params.n as string);
         if (isNaN(n)) {
@@ -179,7 +179,7 @@ export default class Content {
         res.write(`${n}! = ${faktorialis(n)}\n`);
 
         // Tömbök - összetett adatszerkezet, több adat tárolására alkalmas
-        res.write("\nTömbök\n");
+        res.write("\n\n\n\nTömbök\n");
         const nevek: string[] = ["Ádám", "Gréta", "Anyu", "Apu"];
         res.write(nevek[0] + "\n");
         res.write(nevek[1] + "\n");
