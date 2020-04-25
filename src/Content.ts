@@ -191,6 +191,82 @@ export default class Content {
             res.write(nevek[i] + "\n");
         }
 
+        // Bejárás tétele
+        res.write("Számok bejárása\n");
+        const számok: number[] = [23, 67, 77, 88, 73, 21, 20];
+        for (let i = 0; i < számok.length; i++) {
+            res.write(`${számok[i]}, `);
+        }
+        res.write("\n");
+        res.write(számok + "\n");
+
+        // Bejárás for in ciklussal
+        // c# foreach ciklus megfelelője
+        // A ciklusváltozó (i) felveszi sorba a vektorban lévő számokat
+        for (const i of számok) {
+            res.write(`${i}; `);
+        }
+        res.write("\n");
+
+        // for in ciklus ???
+        // a vektor (egy dimenziós tömb) elemeinek indexét vesz fel 0...Array.length-1
+        // C# nyelven ilyen nincs sima for ciklust használunk helyette
+        for (const i in számok) {
+            //res.write(`${i}; `);
+            const utolsóIndex: number = számok.length - 1;
+            // azért kell átalakitani számra, mert az "i" sztring típusú
+            if (parseInt(i) != utolsóIndex) {
+                res.write(`${számok[i]}, `);
+            } else {
+                res.write(`${számok[i]}`);
+            }
+        }
+        res.write("\n");
+
+        // Kiírás a join() függvény használatával
+        res.write(számok.join(". ") + "\n");
+
+        // Szélsőérték keresés algoritmusa
+        // Keressük a legnagyobb elem indexét és értékét
+        let maxi = 0;
+        for (let i = 1; i < számok.length; i++) {
+            if (számok[i] > számok[maxi]) {
+                maxi = i;
+            }
+        }
+        res.write(`A legnagyobb elem értéke: ${számok[maxi]}, indexe: ${maxi}\n`);
+
+        // Minimumkeresés, minimum index nélkül
+        let min: number = számok[0];
+        for (let i = 0; i < számok.length; i++) {
+            if (számok[i] < min) {
+                min = számok[i];
+            }
+        }
+        res.write(`A legkisebb elem értéke: ${min}\n`);
+
+        // Legnagyobb páratlan elem indexe és értéke
+        // Nem jelölhetjük ki az első elemet a legnagyobb páratlan számnak
+        let miniPáratlan: number = -1;
+        for (let i = 0; i < számok.length; i++) {
+            // csak a páratlan számokkal foglalkozunk
+            if (számok[i] % 2 === 1) {
+                // Első páratlan szám?
+                if (miniPáratlan == -1) {
+                    miniPáratlan = i;
+                } else {
+                    if (számok[i] < számok[miniPáratlan]) {
+                        miniPáratlan = i;
+                    }
+                }
+            }
+        }
+        if (miniPáratlan != -1) {
+            res.write(`A legkisebb páratlan elem értéke: ${számok[miniPáratlan]}, indexe: ${miniPáratlan}\n`);
+        }
+
+        // foreach ciklus:
+
         // <---- Fejezd be a kódolást
 
         res.write("</pre></form></body></html>");
