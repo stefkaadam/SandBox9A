@@ -159,7 +159,7 @@ export default class Content {
             }
         }
 
-        res.write("\n\n\n\n\nFüggvény hívása\n");
+        res.write("\n\n\n\nFüggvény hívása\n");
         let x1: number;
         x1 = 4;
         x1++; // vagy x1 = x1 + 1;
@@ -200,7 +200,7 @@ export default class Content {
         res.write("\n");
         res.write(számok + "\n");
 
-        // Bejárás for in ciklussal
+        // Bejárás for of ciklussal
         // c# foreach ciklus megfelelője
         // A ciklusváltozó (i) felveszi sorba a vektorban lévő számokat
         for (const i of számok) {
